@@ -96,7 +96,7 @@ h3.calendar-current-month {
 .calendar-link {
   font-size: 0.6em;
   padding: 0.5em 0.6em;
-  background: var(--colorGrey50l);
+  background: rgba(var(--colorLightBlueRaw), 0.5);
   border-radius: 4px;
   line-height: 12px;
   /* color: var(--colorRoyalBlue); */
