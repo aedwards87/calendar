@@ -1,0 +1,220 @@
+@font-face {
+  font-family: CerebriSans;
+  src: url('./@fonts/CerebriSans-Bold.otf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: CerebriSans;
+  src: url('./@fonts/CerebriSans-Medium.otf') format('Opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: CerebriSans;
+  src: url('./@fonts/CerebriSans-Book.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  /* Colours */
+  --colorLight: rgb(255, 255, 255);
+  --colorDark: var(--colorGrey45d);
+  --colorBlue: rgb(0, 75, 210);
+  --colorBlueRaw: 0, 75, 210;
+  --colorRoyalBlue: rgb(0, 26, 112);
+  --colorOrange: rgb(255, 105, 0);
+  --colorOrange100: rgb(255, 180, 128);
+  --colorOrange200: rgb(255, 143, 64);
+  --colorOrange300: rgb(191, 79, 0);
+  --colorOrange400: rgb(127, 52, 0);
+  --colorLightBlue: rgb(124, 206, 244);
+  --colorLightBlueRaw: 124, 206, 244;
+  --colorAqua: rgb(0, 174, 200);
+  --colorTeal: rgb(0, 103, 147);
+  --colorMaroon: rgb(150, 0, 56);
+  --colorViolet: rgb(58, 0, 153);
+  --colorGreen: rgb(0, 175, 86);
+  --colorYellow: rgb(255, 213, 0);
+  --colorGrey: rgb(93, 136, 171);
+  --colorGreyRaw: 93, 136, 171;
+  --colorGrey50l: rgb(174, 196, 213);
+  --colorGrey25d: rgb(70, 102, 128);
+  --colorGrey45d: rgb(51, 75, 94);
+  --colorGrey60d: rgb(37, 54, 68);
+
+  /* Type */
+  --fontPrimaryFamily: CerebriSans, Arial, sans-serif;
+  --fontSizeBase: 10px;
+  --fontSizeBodySmallest: 1.4rem;
+  --fontSizeBodySmall: 1.6rem;
+  --fontSizeBodyLarge: 1.7rem;
+  --fontSizeDisplayHero: min(max(38px, 12.5vw), 4.471em);
+  --fontSizeDisplay: 4.007em;
+  --fontSizeh1: 3em;
+  --fontSizeh2: 2.25em;
+  --fontSizeh3: 1.742em;
+  --fontSizeh4: 1.32em;
+  --fontSizeh5: 1em;
+  --displayFont: min(max(38px, 12vw), var(--fontSizeDisplay))
+    var(--fontPrimaryFamily);
+
+  /* Measurements */
+  --siteMaxWidth: 1222px;
+
+  /* Space */
+
+  /* Elevations */
+  --level1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --level2: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --level3: 0 4px 6px 0px rgba(0, 0, 0, 0.1), 0 2px 4px 0px rgba(0, 0, 0, 0.06);
+  --level4: 0 10px 15px -3px rgba(0, 0, 0, 0.25),
+    0 4px 6px -2px rgba(0, 0, 0, 0.09);
+  --level5: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --level6: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+  font-size: var(--fontSizeBase);
+  width: calc(100vw / 100%);
+  color: var(--colorRoyalBlue);
+}
+
+body {
+  margin-bottom: 20rem;
+}
+
+@media (min-width: 420px) {
+  body {
+    font-size: var(--fontSizeBodyLarge);
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+body,
+p,
+li,
+span,
+strong,
+em,
+i,
+b,
+a,
+small,
+blockquote,
+button,
+div,
+input,
+textarea {
+  color: var(--colorRoyalBlue);
+  color: inherit;
+  font-family: var(--fontPrimaryFamily);
+  font-weight: 500;
+  font-size: var(--fontSizeBodySmall);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  /* margin: 3rem 0 1.38rem; */
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--colorBlue);
+  letter-spacing: 0.3px;
+}
+
+.layout {
+  /* background: blue; */
+  display: grid;
+  grid-template-columns:
+    1fr
+    /* min(var(--siteMaxWidth), 100%) */
+    min(var(--siteMaxWidth), calc(100% - 14vw))
+    1fr;
+  gap: 7vw;
+}
+
+.layout > * {
+  grid-column: 2;
+  /* background: yellow; */
+}
+
+.layout > .full-bleed {
+  grid-column: 1 / -1;
+}
+
+nav {
+  width: 100%;
+  height: 130px;
+  background: pink;
+  margin-bottom: 8rem;
+}
+
+button {
+  /* background: rgba(var(--colorBlueRaw), 0.1); */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+h1 > span,
+h2 > span,
+h3 > span,
+h4 > span,
+h5 > span {
+  position: relative;
+  z-index: 1;
+  font-size: inherit;
+  color: inherit;
+  font-weight: inherit;
+}
+
+/* h1.underline, 
+h2.underline, 
+h3.underline, 
+h4.underline, 
+h5.underline {
+  margin-bottom: 0.34em;
+} */
+
+h1.underline > span:after,
+h2.underline > span:after,
+h3.underline > span:after,
+h4.underline > span:after,
+h5.underline > span:after {
+  content: '';
+  position: absolute;
+  bottom: -0.15em;
+  left: 1px;
+  height: 0.165em;
+  width: calc(100% - 2px);
+  background-color: var(--colorOrange);
+  z-index: -1;
+}
+
+a {
+  text-decoration: none;
+  color: var(--colorBlue);
+}
