@@ -155,37 +155,15 @@ const renderCalendar = () => {
       .replace(/\s/g, '')
   }
 
-  // Create previous month elements
-  for (let i = monthStartDayIndex; i > 0; i--) {
-    calendarDays.innerHTML += `
-      <div class='calendar-day-container'>
-        <div class='calendar-date'>
-          ${prevMonthLastDay - i + 1}
-        </div>
-        <div class="calendar-tags">
-          <a href="" class="calendar-link">Hello</a>
-        </div>
-      </div>
-    `
-  }
-
-  // Create current month elements
-  for (let i = 1; i <= monthLastDay; i++) {
+  const createElements = (classes, i, nextMonth = 0) => {
     // Get date and filter data that matches that date
-    const getDate = `${i} ${months[date.getMonth()]} ${date.getFullYear()}`
+    const getDate = `${i} ${
+      months[date.getMonth() + nextMonth]
+    } ${date.getFullYear()}`
     const matchDateWithData = data.filter((d) => getDate === d.date)
-
-    // Display classnames dependant on current day or not
-    let dayClass =
-      i === new Date().getDate() &&
-      date.getMonth() === new Date().getMonth() &&
-      date.getFullYear() === new Date().getFullYear()
-        ? 'calendar-day-container current-day'
-        : 'calendar-day-container month-day'
-
     // Create element
     calendarDays.innerHTML += `
-      <div class='${dayClass}'>
+      <div class='${classes}'>
         <div class='calendar-date'>${i}</div>
           ${
             // Checking to make sure there is actually data for said date,
@@ -218,18 +196,29 @@ const renderCalendar = () => {
     `
   }
 
+  // Create previous month elements
+  for (let i = monthStartDayIndex; i > 0; i--) {
+    const className = 'calendar-day-container'
+    createElements(className, prevMonthLastDay - i + 1)
+  }
+
+  // Create current month elements
+  for (let i = 1; i <= monthLastDay; i++) {
+    // Display classnames dependant on current day or not
+    let dayClass =
+      i === new Date().getDate() &&
+      date.getMonth() === new Date().getMonth() &&
+      date.getFullYear() === new Date().getFullYear()
+        ? 'calendar-day-container current-day'
+        : 'calendar-day-container month-day'
+
+    createElements(dayClass, i)
+  }
+
   // Create next month elements
   for (let i = 1; i <= nextMonthDays; i++) {
-    calendarDays.innerHTML += `
-    <div class='calendar-day-container'>
-      <div class='calendar-date'>
-        ${i}
-      </div>
-      <div class="calendar-tags">
-        <a href="" class="calendar-link">Hello</a>
-      </div>
-    </div>
-  `
+    const className = 'calendar-day-container'
+    createElements(className, i, 1)
   }
 }
 

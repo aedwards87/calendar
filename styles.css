@@ -74,14 +74,14 @@ h3.calendar-current-month {
 .calendar-day-container {
   /* background: rgba(var(--colorBlueRaw), .05); */
   border: 1px solid var(--colorGrey50l);
-  padding: clamp(0.1em, 1.2vw, 1em);
+  padding: clamp(0.1em, 1.2vw, 0.8em);
   margin: -1px 0 0 -1px;
   display: grid;
   grid-template-rows: auto 1fr;
   align-items: start;
   gap: 0.5em;
   min-width: 10ch;
-  min-height: 6.5ch;
+  min-height: clamp(7ch, 11vw, 10ch);
 }
 
 .calendar-day-container:not(.month-day):not(.current-day) {
@@ -90,9 +90,7 @@ h3.calendar-current-month {
 }
 
 .calendar-day-container:hover:not(.current-day) {
-  /* background: rgba(var(--colorBlueRaw), 0.2); */
-  background: rgba(var(--colorLightBlueRaw), 0.3);
-  /* outline: 4px solid rgba(var(--colorBlueRaw), 0.3); */
+  background: var(--colorLightBlue50l);
 }
 
 .current-day {
@@ -101,7 +99,7 @@ h3.calendar-current-month {
 
 .calendar-date {
   color: var(--colorRoyalBlue);
-  font-size: clamp(0.8em, 3vw, 1.4em);
+  font-size: clamp(0.8em, 3vw, 1.2em);
   line-height: 1;
 }
 
@@ -140,7 +138,7 @@ h3.calendar-current-month {
 }
 
 .today {
-  font-size: clamp(1em, 3vw, 1.4em);
+  font-size: clamp(1em, 3vw, 1.2em);
   transition: color 0.25s ease-in;
   -webkit-transition: color 0.25s ease-in;
   -moz-transition: color 0.25s ease-in;
