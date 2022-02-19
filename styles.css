@@ -78,7 +78,7 @@ h3.calendar-current-month {
 }
 
 .calendar-day-container:not(.month-day):not(.current-day) {
-  background: rgba(174, 196, 213, 0.15);
+  background: rgba(174, 196, 213, 0.2);
   color: var(--colorGrey50l);
 }
 
@@ -103,7 +103,13 @@ h3.calendar-current-month {
 }
 
 .calendar-day-container:not(.month-day):not(.current-day) .calendar-date {
-  color: var(--colorGrey50l);
+  color: var(--colorGrey25l);
+}
+
+.calendar-day-container:not(.month-day):not(.current-day) .calendar-tags {
+  opacity: 0.6;
+  filter: brightness(0.9);
+  -webkit-filter: brightness(0.9);
 }
 
 .calendar-tags {

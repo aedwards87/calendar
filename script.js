@@ -1,23 +1,39 @@
 const data = [
   {
     id: '1',
-    name: 'Elliot',
-    date: '18 February 2022',
+    title: 'Gov22',
+    date: '6 July 2022',
+    url: 'https://www.cgi.org.uk/events/conferences/gov-2022',
   },
   {
     id: '2',
-    name: 'Phil',
-    date: '17/1/2021',
+    title: 'Gov22',
+    date: '6 July 2022',
+    url: 'https://www.cgi.org.uk/events/conferences/gov-2022',
   },
   {
     id: '3',
-    name: 'Toby',
-    date: '25/1/2021',
+    title: 'Governance Ireland: An evolving landscape',
+    date: '10 May 2022',
+    url: 'https://www.cgi.org.uk/events/conferences/governance-ireland',
   },
   {
     id: '4',
-    name: 'Abc',
-    date: '10/1/2021',
+    title: "Non-Executive Directors' Programme",
+    date: '15 March 2022',
+    url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/non-executive-directors-programme',
+  },
+  {
+    id: '5',
+    title: 'Diversity & Inclusion Summit',
+    date: '22 March 2022',
+    url: 'https://www.cgi.org.uk/events/conferences/dni-summit',
+  },
+  {
+    id: '6',
+    title: 'Effective Minute Taking',
+    date: '24 February 2022',
+    url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/effective-minute-taking',
   },
 ]
 
@@ -48,15 +64,6 @@ const months = [
 
 let date = new Date()
 
-const d = date.toLocaleDateString('en-UK', {
-  month: 'long',
-  year: 'numeric',
-  day: 'numeric',
-})
-
-// console.log(data.map((x) => x.date === d))
-console.log(d === data[0].date)
-
 const renderCalendar = () => {
   const currentMonth = document.querySelector('.calendar-current-month span')
   const calendarDays = document.querySelector('.calendar-weekdays')
@@ -67,10 +74,11 @@ const renderCalendar = () => {
   weekdayName.innerHTML = ''
 
   // Update element to display current month and year
-  currentMonth.textContent = date.toLocaleDateString('en-UK', {
+  const monthAndYear = date.toLocaleDateString('en-UK', {
     month: 'long',
     year: 'numeric',
   })
+  currentMonth.textContent = monthAndYear
 
   // Get current months last date
   const monthLastDay = new Date(
@@ -111,15 +119,15 @@ const renderCalendar = () => {
   // Create previous month elements
   for (let i = monthStartDayIndex; i > 0; i--) {
     calendarDays.innerHTML += `
-    <div class='calendar-day-container'>
-      <div class='calendar-date'>
-        ${prevMonthLastDay - i + 1}
+      <div class='calendar-day-container'>
+        <div class='calendar-date'>
+          ${prevMonthLastDay - i + 1}
+        </div>
+        <div class="calendar-tags">
+          <a href="" class="calendar-link">Hello</a>
+        </div>
       </div>
-      <div class="calendar-tags">
-        <a href="" class="calendar-link">Hello</a>
-      </div>
-    </div>
-  `
+    `
   }
 
   // Create current month elements
@@ -132,17 +140,26 @@ const renderCalendar = () => {
         ? 'calendar-day-container current-day'
         : 'calendar-day-container month-day'
 
+    const getDate = `${i} ${months[date.getMonth()]} ${date.getFullYear()}`
+    const matchDateWithData = data.filter((d) => getDate === d.date)
+
     // Create element
     calendarDays.innerHTML += `
-    <div class='${dayClass}'>
-      <div class='calendar-date'>
-        ${i}
+      <div class='${dayClass}'>
+        <div class='calendar-date'>${i}</div>
+          ${
+            matchDateWithData.length > 0
+              ? `
+                <div class="calendar-tags">
+                  <a href="${matchDateWithData[0].url}" class="calendar-link">
+                    ${matchDateWithData[0].title}
+                  </a>
+                </div>
+              `
+              : ''
+          }
       </div>
-      <div class="calendar-tags">
-        <a href="" class="calendar-link">Hello</a>
-      </div>
-    </div>
-`
+    `
   }
 
   // Create next month elements
