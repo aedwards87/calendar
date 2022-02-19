@@ -171,6 +171,10 @@ const renderCalendar = () => {
 
   // Create current month elements
   for (let i = 1; i <= monthLastDay; i++) {
+    // Get date and filter data that matches that date
+    const getDate = `${i} ${months[date.getMonth()]} ${date.getFullYear()}`
+    const matchDateWithData = data.filter((d) => getDate === d.date)
+
     // Display classnames dependant on current day or not
     let dayClass =
       i === new Date().getDate() &&
@@ -179,34 +183,33 @@ const renderCalendar = () => {
         ? 'calendar-day-container current-day'
         : 'calendar-day-container month-day'
 
-    const getDate = `${i} ${months[date.getMonth()]} ${date.getFullYear()}`
-    const matchDateWithData = data.filter((d) => getDate === d.date)
-
     // Create element
     calendarDays.innerHTML += `
       <div class='${dayClass}'>
         <div class='calendar-date'>${i}</div>
           ${
+            // Checking to make sure there is actually data for said date,
+            // then map over and display data
             matchDateWithData.length > 0
               ? `<div class="calendar-tags">
-                 ${matchDateWithData
-                   .map(
-                     (match) =>
-                       `<a 
-                          href="${match.url}" 
-                          class="calendar-link"
-                          title="${match.title}"
-                          style="${`--calendarLinkBgColor: var(--color${capitilise(
-                            match.color
-                          )}75l); --calendarLinkColor: var(--color${capitilise(
-                            match.color
-                          )});`}"
-                        >
-                          ${match.title}
-                        </a>
-                      `
-                   )
-                   .join('')}
+                ${matchDateWithData
+                  .map(
+                    (match) =>
+                      `<a 
+                        href="${match.url}" 
+                        class="calendar-link"
+                        title="${match.title}"
+                        style="${`--calendarLinkBgColor: var(--color${capitilise(
+                          match.color
+                        )}75l); --calendarLinkColor: var(--color${capitilise(
+                          match.color
+                        )});`}"
+                      >
+                        ${match.title}
+                      </a>
+                    `
+                  )
+                  .join('')}
                 </div>
               `
               : ''

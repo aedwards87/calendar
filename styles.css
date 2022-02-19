@@ -1,7 +1,7 @@
 .calendar-container {
   width: 100%;
   display: grid;
-  gap: clamp(1em, 2vw, 5em);
+  gap: clamp(1em, 5vw, 5em);
 }
 
 .calendar-nav {
@@ -18,6 +18,7 @@
   display: grid;
   width: 100%;
   padding-left: 1px;
+  padding-bottom: 1em;
   overflow-x: scroll; /* Calendar just won't fit for mobile, so adding a scroll allows users use of the calendar that gets hidden */
 }
 
@@ -57,6 +58,10 @@ h3.calendar-current-month {
   grid-template-columns: repeat(7, 1fr);
 }
 
+.calendar-weekdays {
+  min-height: clamp(300px, 10vw, 450px);
+}
+
 .weekday-name {
   color: var(--colorBlue);
   padding: clamp(0.1em, 2vw, 1em) clamp(0.1em, 2vw, 1em) 1em;
@@ -75,6 +80,8 @@ h3.calendar-current-month {
   grid-template-rows: auto 1fr;
   align-items: start;
   gap: 0.5em;
+  min-width: 10ch;
+  min-height: 6.5ch;
 }
 
 .calendar-day-container:not(.month-day):not(.current-day) {
