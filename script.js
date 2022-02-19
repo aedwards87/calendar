@@ -4,36 +4,63 @@ const data = [
     title: 'Gov22',
     date: '5 July 2022',
     url: 'https://www.cgi.org.uk/events/conferences/gov-2022',
+    color: 'Orange',
   },
   {
     id: '2',
     title: 'Gov22',
     date: '6 July 2022',
     url: 'https://www.cgi.org.uk/events/conferences/gov-2022',
+    color: 'Orange',
   },
   {
     id: '3',
     title: 'Governance Ireland: An evolving landscape',
     date: '10 May 2022',
     url: 'https://www.cgi.org.uk/events/conferences/governance-ireland',
+    color: 'Teal',
   },
   {
     id: '4',
     title: "Non-Executive Directors' Programme",
     date: '15 March 2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/non-executive-directors-programme',
+    color: 'Light Blue',
   },
   {
     id: '5',
     title: 'Diversity & Inclusion Summit',
     date: '22 March 2022',
     url: 'https://www.cgi.org.uk/events/conferences/dni-summit',
+    color: 'Aqua',
   },
   {
     id: '6',
     title: 'Effective Minute Taking',
-    date: '24 February 2022',
+    date: '19 February 2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/effective-minute-taking',
+    color: 'Orange',
+  },
+  {
+    id: '7',
+    title: 'ESG: Summit',
+    date: '22 April 2022',
+    url: 'https://www.cgi.org.uk/events/conferences/esg-summit',
+    color: 'Yellow',
+  },
+  {
+    id: '8',
+    title: 'The Role of the Company Secretary: Part 1',
+    date: '22 February 2022',
+    url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/the-role-of-the-company-secretary-part-1',
+    color: 'Blue',
+  },
+  {
+    id: '9',
+    title: 'The Role of the Company Secretary: Part 2',
+    date: '23 February 2022',
+    url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/the-role-of-the-company-secretary-part-2',
+    color: 'Blue',
   },
 ]
 
@@ -116,6 +143,18 @@ const renderCalendar = () => {
     return (weekdayName.innerHTML += `<div class='weekday-name'>${weekday}</div>`)
   })
 
+  // Helper function: Remove space and capitilise text
+  const capitilise = function capitilise(str) {
+    if (str === undefined) {
+      return
+    }
+    return str
+      .replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1)
+      })
+      .replace(/\s/g, '')
+  }
+
   // Create previous month elements
   for (let i = monthStartDayIndex; i > 0; i--) {
     calendarDays.innerHTML += `
@@ -149,11 +188,25 @@ const renderCalendar = () => {
         <div class='calendar-date'>${i}</div>
           ${
             matchDateWithData.length > 0
-              ? `
-                <div class="calendar-tags">
-                  <a href="${matchDateWithData[0].url}" class="calendar-link">
-                    ${matchDateWithData[0].title}
-                  </a>
+              ? `<div class="calendar-tags">
+                 ${matchDateWithData
+                   .map(
+                     (match) =>
+                       `<a 
+                          href="${match.url}" 
+                          class="calendar-link"
+                          title="${match.title}"
+                          style="${`--calendarLinkBgColor: var(--color${capitilise(
+                            match.color
+                          )}75l); --calendarLinkColor: var(--color${capitilise(
+                            match.color
+                          )});`}"
+                        >
+                          ${match.title}
+                        </a>
+                      `
+                   )
+                   .join('')}
                 </div>
               `
               : ''
