@@ -155,7 +155,7 @@ const renderCalendar = () => {
       .replace(/\s/g, '')
   }
 
-  const createElements = (classes, i, nextMonth = 0) => {
+  const createDayElements = (classes, i, nextMonth = 0) => {
     // Get date and filter data that matches that date
     const getDate = `${i} ${
       months[date.getMonth() + nextMonth]
@@ -199,7 +199,7 @@ const renderCalendar = () => {
   // Create previous month elements
   for (let i = monthStartDayIndex; i > 0; i--) {
     const className = 'calendar-day-container'
-    createElements(className, prevMonthLastDay - i + 1)
+    createDayElements(className, prevMonthLastDay - i + 1)
   }
 
   // Create current month elements
@@ -212,13 +212,13 @@ const renderCalendar = () => {
         ? 'calendar-day-container current-day'
         : 'calendar-day-container month-day'
 
-    createElements(dayClass, i)
+    createDayElements(dayClass, i)
   }
 
   // Create next month elements
   for (let i = 1; i <= nextMonthDays; i++) {
     const className = 'calendar-day-container'
-    createElements(className, i, 1)
+    createDayElements(className, i, 1)
   }
 }
 
