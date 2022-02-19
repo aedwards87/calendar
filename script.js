@@ -2,7 +2,7 @@ const data = [
   {
     id: '1',
     title: 'Gov22',
-    date: '6 July 2022',
+    date: '5 July 2022',
     url: 'https://www.cgi.org.uk/events/conferences/gov-2022',
   },
   {
