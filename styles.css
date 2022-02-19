@@ -1,7 +1,7 @@
 .calendar-container {
   width: 100%;
   display: grid;
-  gap: 5em;
+  gap: clamp(1em, 2vw, 5em);
 }
 
 .calendar-nav {
@@ -10,28 +10,45 @@
   grid-template-columns: 1fr 100%; */
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 2em;
+  align-items: flex-end;
+  gap: clamp(1.7em, 2vw, 2em);
 }
 
 .calendar-body {
   display: grid;
+  width: 100%;
+  padding-left: 1px;
+  overflow-x: scroll; /* Calendar just won't fit for mobile, so adding a scroll allows users use of the calendar that gets hidden */
 }
 
-
 h3.calendar-current-month {
-  font-size: var(--fontSizeh2);
+  font-size: 23px;
   white-space: nowrap;
-  flex: 2;
+  flex: 10;
+}
+
+@media (min-width: 480px) {
+  h3.calendar-current-month {
+    font-size: var(--fontSizeh2);
+  }
 }
 
 .calendar-button-container {
   display: flex;
   flex-wrap: nowrap;
   flex: 1;
-  justify-content: center;
-  gap: 1rem
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
 }
 
+@media (max-width: 580px) {
+  .calendar-nav {
+    display: grid;
+    width: 100%;
+    justify-content: stretch;
+  }
+}
 
 /*  Body section */
 .calendar-weekdays-names,
@@ -42,34 +59,33 @@ h3.calendar-current-month {
 
 .weekday-name {
   color: var(--colorBlue);
-  padding: 
-    clamp(.1em, 2vw, 1em)
-    clamp(.1em, 2vw, 1em) 
-    1em; 
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: .8em;
+  padding: clamp(0.1em, 2vw, 1em) clamp(0.1em, 2vw, 1em) 1em;
+  /* text-transform: uppercase;
+  letter-spacing: 4px; */
+  /* font-weight: 700; */
+  font-size: clamp(0.6em, 3vw, 0.8em);
 }
 
 .calendar-day-container {
   /* background: rgba(var(--colorBlueRaw), .05); */
   border: 1px solid var(--colorGrey50l);
-  padding: 
-    clamp(.02em, 2vw, .5em) 
-    clamp(.1em, 2vw, 1em) 
-    1em;
-  margin:-1px 0 0 -1px;
+  padding: clamp(0.1em, 1.2vw, 1em);
+  margin: -1px 0 0 -1px;
   display: grid;
-  gap: .5em;
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  gap: 0.5em;
 }
 
 .calendar-day-container:not(.month-day):not(.current-day) {
-  background: rgba(174, 196, 213, .15);
+  background: rgba(174, 196, 213, 0.15);
   color: var(--colorGrey50l);
 }
 
 .calendar-day-container:hover:not(.current-day) {
-  background: rgba(var(--colorBlueRaw), .3);
+  /* background: rgba(var(--colorBlueRaw), 0.2); */
+  background: rgba(var(--colorLightBlueRaw), 0.3);
+  /* outline: 4px solid rgba(var(--colorBlueRaw), 0.3); */
 }
 
 .current-day {
@@ -78,7 +94,8 @@ h3.calendar-current-month {
 
 .calendar-date {
   color: var(--colorRoyalBlue);
-  font-size: 1.7em;
+  font-size: clamp(0.8em, 3vw, 1.4em);
+  line-height: 1;
 }
 
 .current-day .calendar-date {
@@ -92,15 +109,49 @@ h3.calendar-current-month {
 .calendar-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: .3em;
+  gap: 0.3em;
 }
 
 .calendar-link {
-  font-size: var(--fontSizeBodySmallest);
-  padding: .2em .5em;
-  background: var(--colorGrey50l);
+  font-size: 0.6em;
+  padding: 0.5em 0.6em;
+  position: relative;
+  background: rgba(var(--colorLightBlueRaw), 0.3);
   border-radius: 4px;
-  /* color: var(--colorRoyalBlue); */
+  line-height: 12px;
+  /* color: var(--colorRoyalBluse); */
   cursor: pointer;
   color: var(--colorRoyalBlue);
+  border-left: 4px solid var(--colorLightBlue);
+  z-index: 3;
+}
+
+.today {
+  font-size: clamp(1em, 3vw, 1.4em);
+  transition: color 0.25s ease-in;
+  -webkit-transition: color 0.25s ease-in;
+  -moz-transition: color 0.25s ease-in;
+  -ms-transition: color 0.25s ease-in;
+  -o-transition: color 0.25s ease-in;
+}
+
+.today:hover {
+  color: var(--colorOrange);
+}
+
+.action-button {
+  border: clamp(2px, 0.4vw, 3px) solid var(--colorOrange);
+  height: clamp(2em, 5vw, 2.7em);
+  font-size: clamp(1em, 1.3vw, 1em);
+  aspect-ratio: 1;
+  transition: background 0.25s ease-in, color 0.25s ease-in;
+  -webkit-transition: background 0.25s ease-in, color 0.25s ease-in;
+  -moz-transition: background 0.25s ease-in, color 0.25s ease-in;
+  -ms-transition: background 0.25s ease-in, color 0.25s ease-in;
+  -o-transition: background 0.25s ease-in, color 0.25s ease-in;
+}
+
+.action-button:hover {
+  background: var(--colorOrange);
+  color: var(--colorLight);
 }

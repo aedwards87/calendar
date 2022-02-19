@@ -1,3 +1,26 @@
+const data = [
+  {
+    id: '1',
+    name: 'Elliot',
+    date: '18 February 2022',
+  },
+  {
+    id: '2',
+    name: 'Phil',
+    date: '17/1/2021',
+  },
+  {
+    id: '3',
+    name: 'Toby',
+    date: '25/1/2021',
+  },
+  {
+    id: '4',
+    name: 'Abc',
+    date: '10/1/2021',
+  },
+]
+
 const weekdays = [
   'Monday',
   'Tuesday',
@@ -23,100 +46,138 @@ const months = [
   'December',
 ]
 
-const abbreviateString = (array) => array.map(str => str.substring(0,3))
-console.log(abbreviateString(months))
-console.log(abbreviateString(weekdays))
+let date = new Date()
 
-const currentMonth = document.querySelector(".calendar-current-month span");
-const calendarDays = document.querySelector(".calendar-weekdays");
-const today = new Date();
-const date = new Date();
-const dateLocale = date.toLocaleDateString("en-UK", { month:'long', year:'numeric' });
-// console.log({date})
-
-console.log(date.toLocaleDateString("en-UK", { weekday: 'long', month:'long', year:'numeric', day: 'numeric' }))
-currentMonth.textContent = dateLocale
-
-today.setHours(0,0,0,0);
-// console.log({today})
-// renderCalendar();
-
-const prevMonthLastDay = new Date(date.getFullYear(),date.getMonth(),0).getDate();
-const totalMonthDays = new Date(date.getFullYear(),date.getMonth()+1,0).getDate();
-const startWeekDay = new Date(date.getFullYear(),date.getMonth(),1).getDay();
-console.log({prevMonthLastDay, totalMonthDays, startWeekDay})
-
-const numberOfWeekedays = 7
-const maxNumberOfCalendarRows = 6
-let totalCalendarDay = numberOfWeekedays * maxNumberOfCalendarRows
-
-
-
-const populateWeekdayNames = abbreviateString(weekdays).map(weekday => {
-  const weekdayName = document.querySelector(".calendar-weekdays-names")
-  return weekdayName.innerHTML += `<div class='weekday-name'>${weekday}</div>`
+const d = date.toLocaleDateString('en-UK', {
+  month: 'long',
+  year: 'numeric',
+  day: 'numeric',
 })
 
-renderCalendar()
-function renderCalendar() {
-  for (let i = 0; i < totalCalendarDay; i++) {
-    let day = i - startWeekDay
-    console.log({ day })
+// console.log(data.map((x) => x.date === d))
+console.log(d === data[0].date)
 
-    if (i <= startWeekDay) {
-      // adding previous month days
-      calendarDays.innerHTML += `
-        <div class='calendar-day-container'>
-          <div class='calendar-date'>
-            ${prevMonthLastDay - i}
-          </div>
-        </div>
-      `
-    } else if (i <= startWeekDay + totalMonthDays) {
+const renderCalendar = () => {
+  const currentMonth = document.querySelector('.calendar-current-month span')
+  const calendarDays = document.querySelector('.calendar-weekdays')
+  const weekdayName = document.querySelector('.calendar-weekdays-names')
 
-        // adding this month days
-        date.setDate(day)
-        date.setHours(0,0,0,0);
+  // make sure fields are empty before (re)populating
+  calendarDays.innerHTML = ''
+  weekdayName.innerHTML = ''
 
-        // Adds a classname          
-        let dayClass = date.getTime() === today.getTime() 
-            ? 'calendar-day-container current-day' 
-              : 'calendar-day-container month-day'
+  // Update element to display current month and year
+  currentMonth.textContent = date.toLocaleDateString('en-UK', {
+    month: 'long',
+    year: 'numeric',
+  })
 
-        // Create element
-        calendarDays.innerHTML += `
-          <div class='${dayClass}'>
-            <div class='calendar-date'>
-              ${day}
-            </div>
-            <div class="calendar-tags">
-              <a href="" class="calendar-link">Hello</a>
-            </div>
-          </div>
-        `
+  // Get current months last date
+  const monthLastDay = new Date(
+    date.getFullYear(),
+    date.getMonth() + 1,
+    0
+  ).getDate()
 
-    } else {
+  // const monthLastDayIndex = new Date(
+  //   date.getFullYear(),
+  //   date.getMonth() + 1,
+  //   0
+  // ).getDay()
 
-        // adding next month days
-        calendarDays.innerHTML += `
-          <div class='calendar-day-container'>
-            <div class='calendar-date'>
-              ${day - totalMonthDays}
-            </div>
-          </div>
-        `
+  // Get current months start day index
+  const monthStartDayIndex = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    0
+  ).getDay()
 
-    }
+  // Get previous month last day index
+  const prevMonthLastDay = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    0
+  ).getDate()
+
+  // Determines number of next months days to display
+  const nextMonthDays = 42 - (monthStartDayIndex + monthLastDay)
+
+  // Shortens an array of strings to 3 characters
+  const abbreviateString = (array) => array.map((str) => str.substring(0, 3))
+  const populateWeekdayNames = abbreviateString(weekdays).map((weekday) => {
+    return (weekdayName.innerHTML += `<div class='weekday-name'>${weekday}</div>`)
+  })
+
+  // Create previous month elements
+  for (let i = monthStartDayIndex; i > 0; i--) {
+    calendarDays.innerHTML += `
+    <div class='calendar-day-container'>
+      <div class='calendar-date'>
+        ${prevMonthLastDay - i + 1}
+      </div>
+      <div class="calendar-tags">
+        <a href="" class="calendar-link">Hello</a>
+      </div>
+    </div>
+  `
+  }
+
+  // Create current month elements
+  for (let i = 1; i <= monthLastDay; i++) {
+    // Display classnames dependant on current day or not
+    let dayClass =
+      i === new Date().getDate() &&
+      date.getMonth() === new Date().getMonth() &&
+      date.getFullYear() === new Date().getFullYear()
+        ? 'calendar-day-container current-day'
+        : 'calendar-day-container month-day'
+
+    // Create element
+    calendarDays.innerHTML += `
+    <div class='${dayClass}'>
+      <div class='calendar-date'>
+        ${i}
+      </div>
+      <div class="calendar-tags">
+        <a href="" class="calendar-link">Hello</a>
+      </div>
+    </div>
+`
+  }
+
+  // Create next month elements
+  for (let i = 1; i <= nextMonthDays; i++) {
+    calendarDays.innerHTML += `
+    <div class='calendar-day-container'>
+      <div class='calendar-date'>
+        ${i}
+      </div>
+      <div class="calendar-tags">
+        <a href="" class="calendar-link">Hello</a>
+      </div>
+    </div>
+  `
   }
 }
 
-
-
-document.querySelectorAll(".action-button").forEach(function (element) {
-  element.addEventListener("click", function () {
-      date = new Date(currentMonth.textContent);
-      date.setMonth(date.getMonth() + (element.classList.contains("prevMonth") ? -1 : 1));
-      currentMonth.textContent = dateLocale
-      renderCalendar();
-  })
+// Create onClick event to handle next and previous month population
+document.querySelectorAll('.action-button').forEach(function (element) {
+  const clickHandler = () => {
+    date.setMonth(
+      date.getMonth() + (element.classList.contains('prevMonth') ? -1 : 1)
+    )
+    renderCalendar()
+  }
+  element.addEventListener('click', clickHandler)
 })
+
+// Create onClick event to handle current month population
+document.querySelectorAll('.today').forEach(function (element) {
+  const clickHandler = () => {
+    date = new Date()
+    renderCalendar()
+  }
+  element.addEventListener('click', clickHandler)
+})
+
+renderCalendar()
