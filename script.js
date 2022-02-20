@@ -311,7 +311,7 @@ const renderCalendar = () => {
 document.querySelectorAll('.action-button').forEach(function (element) {
   const clickHandler = () => {
     date.setMonth(
-      date.getMonth() + (element.classList.contains('prevMonth') ? -1 : 1)
+      date.getMonth() + (element.classList.contains('prev-month') ? -1 : 1)
     )
     renderCalendar()
   }
