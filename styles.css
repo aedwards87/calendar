@@ -124,12 +124,12 @@ h3.calendar-current-month {
 }
 
 .calendar-link {
-  font-size: 0.6em;
+  font-size: clamp(0.6em, 1vw, 0.7em);
   padding: 0.5em 0.6em;
   position: relative;
   background: var(--calendarLinkBgColor);
   border-radius: 4px;
-  line-height: 12px;
+  line-height: clamp(12px, 1.2vw, 14px);
   /* color: var(--colorRoyalBluse); */
   cursor: pointer;
   color: var(--colorRoyalBlue);
