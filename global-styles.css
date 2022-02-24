@@ -24,11 +24,11 @@
   --colorLight: rgb(255, 255, 255);
   --colorDark: var(--colorGrey45d);
   --colorBlue: rgb(0, 75, 210);
-  --colorBlue75l: rgb(176, 205, 244);
-  /* --colorBlue50l: rgb(255, 180, 128);
-  --colorBlue25l: rgb(255, 143, 64);
-  --colorBlue25d: rgb(191, 79, 0);
-  --colorBlue50d: rgb(127, 52, 0); */
+  --colorBlue75l: rgb(187, 211, 249);
+  --colorBlue50l: rgb(128, 165, 233);
+  --colorBlue25l: rgb(64, 120, 221);
+  --colorBlue25d: rgb(0, 56, 157);
+  --colorBlue50d: rgb(0, 37, 105);
   --colorBlueRaw: 0, 75, 210;
   --colorRoyalBlue: rgb(0, 26, 112);
   --colorRoyalBlue75l: rgb(108, 125, 171);

@@ -133,6 +133,10 @@ h3.calendar-current-month {
   gap: 0.3em;
 }
 
+.current-day .calendar-link {
+  border-left: 4px solid var(--colorBlue25l);
+}
+
 .calendar-link {
   font-size: clamp(0.6em, 1vw, 0.7em);
   padding: 0.5em 0.6em;

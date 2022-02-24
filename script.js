@@ -1,149 +1,122 @@
 const data = [
   {
-    id: '1',
     title: 'Gov22',
-    date: '5 July 2022',
+    date: '5/7/2022, 6/7/2022',
     url: 'https://www.cgi.org.uk/events/conferences/gov-2022',
     color: 'Orange',
   },
   {
-    id: '2',
-    title: 'Gov22',
-    date: '6 July 2022',
-    url: 'https://www.cgi.org.uk/events/conferences/gov-2022',
-    color: 'Orange',
-  },
-  {
-    id: '3',
     title: 'Governance Ireland: An evolving landscape',
-    date: '10 May 2022',
+    date: '10/5/2022',
     url: 'https://www.cgi.org.uk/events/conferences/governance-ireland',
     color: 'Teal',
   },
   {
-    id: '4',
     title: "Non-Executive Directors' Programme",
-    date: '15 March 2022',
+    date: '15/3/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/non-executive-directors-programme',
     color: 'Light Blue',
   },
   {
-    id: '5',
     title: 'Diversity & Inclusion Summit',
-    date: '22 March 2022',
+    date: '22/3/2022',
     url: 'https://www.cgi.org.uk/events/conferences/dni-summit',
     color: 'Aqua',
   },
   {
-    id: '6',
     title: 'Effective Minute Taking',
-    date: '19 February 2022',
+    date: '18/2/2022, 8/3/2022, 12/4/2022, 18/5/2022, 6/6/2022, 25/7/2022, 12/8/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/effective-minute-taking',
     color: 'Orange',
   },
   {
-    id: '7',
     title: 'ESG: Summit',
-    date: '22 April 2022',
+    date: '22/4/2022',
     url: 'https://www.cgi.org.uk/events/conferences/esg-summit',
     color: 'Yellow',
   },
   {
-    id: '8',
     title: 'The Role of the Company Secretary: Part 1',
-    date: '22 February 2022',
+    date: '22/2/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/the-role-of-the-company-secretary-part-1',
     color: 'Blue',
   },
   {
-    id: '9',
     title: 'The Role of the Company Secretary: Part 2',
-    date: '23 February 2022',
+    date: '24/2/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/the-role-of-the-company-secretary-part-2',
     color: 'Blue',
   },
   {
-    id: '10',
     title: 'Company Secretarial Practice for PLCs',
-    date: '26 April 2022',
+    date: '26/4/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/company-secretarial-practice-for-plcs',
     color: 'Blue',
   },
   {
-    id: '11',
     title: 'Company Secretarial Practice for Support Staff',
-    date: '11 May 2022',
+    date: '11/5/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/company-secretarial-practice-for-support-staff',
     color: 'Blue',
   },
   {
-    id: '12',
     title: 'Document Retention: Getting it Right',
-    date: '12 May 2022',
+    date: '12/5/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/document-retention-getting-it-right',
     color: 'Blue',
   },
   {
-    id: '13',
     title: 'Introduction to Company Law',
-    date: '14 June 2022',
+    date: '14/6/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/introduction-to-company-law',
     color: 'Blue',
   },
   {
-    id: '14',
     title: 'Essential Corporate Governance',
-    date: '28 April 2022',
+    date: '28/4/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/essential-corporate-governance',
     color: 'Blue',
   },
   {
-    id: '15',
     title:
       'Are you prepared for the UK Modern Slavery Act (2015) new compliance requirements?',
-    date: '17 May 2022',
+    date: '17/5/2022',
     url: 'https://www.cgi.org.uk/events/networking-and-cpd-events/cpd-events/modern-slavery-act-2015-may',
     color: 'Blue',
   },
   {
-    id: '16',
     title: 'Is all Local Government shades of Handforth?',
-    date: '22 February 2022',
+    date: '22/2/2022',
     url: 'https://www.cgi.org.uk/about-us/regional-branches-groups/east-of-england/events/upcoming-events/local-government',
     color: 'Blue',
   },
   {
-    id: '17',
-    title: 'Isle of Man branch - Annual Dinner – Joint event with the ACCA',
-    date: '11 March 2022',
+    title: 'Isle of Man branch - Annual Dinner - Joint event with the ACCA',
+    date: '11/3/2022',
     url: 'https://www.cgi.org.uk/about-us/regional-branches-groups/isle-of-man/events/upcoming-events/annual-dinner-2022',
     color: 'Blue',
   },
   {
-    id: '18',
     title: 'Essential Charity Governance Course',
-    date: '20 April 2022',
+    date: '20/4/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/essential-charity-governance',
     color: 'Green',
   },
   {
-    id: '19',
     title: 'GLP - Influencing Skills for Governance Professionals',
-    date: '29 March 2022',
+    date: '29/3/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/governance-leadership-programme?tabNum=2',
     color: 'Violet',
   },
   {
-    id: '20',
     title: 'GLP - Influencing Skills for Governance Professionals',
-    date: '23 June 2022',
+    date: '23/6/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/governance-leadership-programme?tabNum=2',
     color: 'Violet',
   },
   {
-    id: '21',
     title: 'GLP - Strategic Skills for Governance Professionals',
-    date: '28 February 2022',
+    date: '28/2/2022',
     url: 'https://www.cgi.org.uk/professional-development/training/virtual-training-courses/governance-leadership-programme?tabNum=3',
     color: 'Violet',
   },
@@ -174,6 +147,11 @@ const months = [
   'December',
 ]
 
+// Converts the date from a string to an array using .split
+// also, removes any empty spaces.
+const convertDateToArray = data.map(
+  (d) => [{ ...d, date: d.date.replace(/\s/g, '').split(',') }][0]
+)
 let date = new Date()
 
 const renderCalendar = () => {
@@ -220,11 +198,12 @@ const renderCalendar = () => {
   ).getDate()
 
   // Determines number of next months days to display
+  // 42 represents the maximum numbers of days that could possibly be displayed on a single calendar month, including prev and next months.
   const nextMonthDays = 42 - (monthStartDayIndex + monthLastDay)
 
   // Shortens an array of strings to 3 characters
   const abbreviateString = (array) => array.map((str) => str.substring(0, 3))
-  const populateWeekdayNames = abbreviateString(weekdays).map((weekday) => {
+  abbreviateString(weekdays).map((weekday) => {
     return (weekdayName.innerHTML += `<div class='weekday-name'>${weekday}</div>`)
   })
 
@@ -240,37 +219,69 @@ const renderCalendar = () => {
       .replace(/\s/g, '')
   }
 
-  const createDayElements = (classes, i, nextMonth = 0) => {
+  const createDayElements = (classes, i, nextMonth = 1) => {
     // Get date and filter data that matches that date
-    const getDate = `${i} ${
-      months[date.getMonth() + nextMonth]
-    } ${date.getFullYear()}`
-    const matchDateWithData = data.filter((d) => getDate === d.date)
+    const getMonth = date.getMonth() + nextMonth
+    const getDate = `${i}/${getMonth}/${date.getFullYear()}`
+
+    // Find data with multiple dates and separate them into their own fields
+    const separateMultipleDates = (data) => {
+      let newData = []
+      data.map((item) => {
+        if (item.date.length > 1) {
+          item.date.map((date) => {
+            return newData.push({
+              title: item.title,
+              date: [date],
+              url: item.url,
+              color: item.color,
+            })
+          })
+        }
+      })
+      return newData
+    }
+    // Create a new array with the data, removing those that have multiple dates
+    const dataWithoutMultipleDates = convertDateToArray.filter(
+      (item) => item.date.length === 1
+    )
+    // Then combine data
+    const combineData = dataWithoutMultipleDates.concat(
+      separateMultipleDates(convertDateToArray)
+    )
+
+    // Filter data that match the current dates
+    const matchDateWithData = combineData.filter(
+      (d) => d.date.toString() === getDate
+    )
+
     // Create element
     calendarDays.innerHTML += `
       <div class='${classes}'>
         <div class='calendar-date'>${i}</div>
           ${
-            // Checking to make sure there is actually data for said date,
-            // then map over and display data
             matchDateWithData.length > 0
-              ? `<div class="calendar-tags">
+              ? // Checking to make sure there is actually data for said date,
+                // then map over and display data
+                `<div class="calendar-tags">
                 ${matchDateWithData
                   .map(
                     (match) =>
-                      `<a 
-                        href="${match.url}" 
-                        class="calendar-link"
-                        title="${match.title}"
-                        style="${`--calendarLinkBgColor: var(--color${capitilise(
-                          match.color
-                        )}75l); --calendarLinkColor: var(--color${capitilise(
-                          match.color
-                        )});`}"
-                      >
-                        ${match.title}
-                      </a>
-                    `
+                      `
+                        <a 
+                          href="${match.url}" 
+                          class="calendar-link"
+                          title="${match.title}"
+                          style="${`--calendarLinkBgColor: var(--color${capitilise(
+                            match.color
+                          )}75l); --calendarLinkColor: var(--color${capitilise(
+                            match.color
+                          )});`}"
+                        >
+                          ${match.title} 
+            
+                        </a>
+                      `
                   )
                   .join('')}
                 </div>
@@ -284,7 +295,7 @@ const renderCalendar = () => {
   // Create previous month elements
   for (let i = monthStartDayIndex; i > 0; i--) {
     const className = 'calendar-day-container'
-    createDayElements(className, prevMonthLastDay - i + 1)
+    createDayElements(className, prevMonthLastDay - i + 1, 0)
   }
 
   // Create current month elements
@@ -303,7 +314,7 @@ const renderCalendar = () => {
   // Create next month elements
   for (let i = 1; i <= nextMonthDays; i++) {
     const className = 'calendar-day-container'
-    createDayElements(className, i, 1)
+    createDayElements(className, i, 2)
   }
 }
 
